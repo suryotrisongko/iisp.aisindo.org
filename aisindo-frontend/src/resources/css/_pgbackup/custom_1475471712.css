@@ -1,0 +1,22 @@
+
+
+/* Put your custom styles here */
+
+.promo-1
+{
+    background-image: url('../images/aisindo-annual-meeting-2016.jpg');
+    padding: 40px 40px;
+}
+
+
+.promo-1 h2, .promo-1 p, .promo-1 label
+{
+    color: #ffffff;
+}
+
+.content-block
+{
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+

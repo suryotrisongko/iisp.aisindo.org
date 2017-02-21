@@ -1,0 +1,57 @@
+        <header id="header-1" class="soft-scroll header-1">
+            <!-- Navbar -->
+            <nav class="main-nav navbar-fixed-top headroom headroom--pinned">
+                <div class="container">
+                    <!-- Brand and toggle -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a routerLink="/home" routerLinkActive="active">
+                            <img src="resources/images/brand/aisindo-expert-database-logo.png" class="brand-img img-responsive">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item" >
+                                <a routerLink="/home" routerLinkActive="active">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a routerLink="/experts-database" routerLinkActive="active">IISP Database</a>
+                            </li>
+                            <li class="nav-item" *ngIf="!loginService.checkLogin()">
+                                <a routerLink="/register" routerLinkActive="active">Membership Registration</a>
+                            </li>
+                            <li class="nav-item" *ngIf="loginService.checkLogin() && !loginService.checkAdmin() ">
+                                <a routerLink="/membership-registration" routerLinkActive="active">Registration/Renewal</a>
+                            </li>
+                            <li class="nav-item" *ngIf="loginService.checkLogin()">
+                                <a routerLink="/edit-profile" routerLinkActive="active">Edit Profile/Password</a>
+                            </li>
+                            <li class="nav-item" *ngIf="loginService.checkLogin() && loginService.checkActiveMember() ">
+                                <a routerLink="/update-pdu" routerLinkActive="active">Submit PDU</a>
+                            </li>
+                            <li class="nav-item" *ngIf="loginService.checkLogin() && loginService.checkAdmin() ">
+                                <a routerLink="/list-user" routerLinkActive="active">List User</a>
+                            </li>
+                            <li class="nav-item" *ngIf="loginService.checkLogin() && ( loginService.checkAdmin() ||  loginService.checkReviewer() ) ">
+                                <a routerLink="/list-pdu" routerLinkActive="active">Review PDU</a>
+                            </li>
+                            <li class="active nav-item">
+                                <a routerLink="/login" routerLinkActive="active" (click)="onClick()">
+                                  {{loginService.checkLogin()? 'Logout' : 'Login'}}
+                                </a>
+                            </li>
+                        </ul>
+                        <!--//nav-->
+                    </div>
+                    <!-- Navigation -->
+                    <!--// End Navigation -->
+                </div>
+                <!--// End Container -->
+            </nav>
+            <!--// End Navbar -->
+        </header>

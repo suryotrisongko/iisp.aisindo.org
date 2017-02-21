@@ -1,0 +1,19 @@
+<table class="table" data-pg-collapsed>
+    <thead>
+        <tr>
+            <th>Last Update</th>
+            <th>Email (click to edit/review!)</th>
+            <th>Status</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let pdu of pdus">
+            <td>{{pdu.lastupdate | dateToIso}}</td>
+            <td (click)="onSelect(pdu)" style="cursor: pointer">{{pdu.email}}</td>
+            <td>{{pdu.status}}</td>
+            <td>{{pdu.notes}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+
+        <section id="promo-1" class="content-block promo-1 bg-offwhite min-height-400px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-1">
+                        <h2>Association for Information Systems Indonesia (AISINDO)</h2>
+                        <p class="lead">AISINDO is the Indonesia chapter of Association for Information Systems (AIS) - <a href="http://aisnet.org/">http://aisnet.org</a></p>
+                        <p>AIS is the premier professional association for individuals and organizations who lead the research, teaching, practice, and study of information systems worldwide. AIS has members from over 90 countries. Register now for AISINDO membership!</p>
+                        <div class="row">
+                            <div class="col-sm-5 col-xs-12">
+                                <a href="http://aisindo.org/" class="btn btn-block btn-primary"><span class="fa fa-external-link"></span> About Aisindo</a>
+                            </div>
+                            <div class="col-sm-5 col-xs-12">
+                                <a href="http://aisindo.org/aisindo-membership/" class="btn btn-block btn-warning"><span class="fa fa-external-link"></span> Get Involved</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <h2>Information Systems Professionals Database</h2>
+                        <p>Find/Search Information Systems experts around Indonesia.</p>
+                        <form (ngSubmit)="onSubmit()" >
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="keyword" [(ngModel)]="model.keyword" ngControl="keyword" placeholder="Name/Organization/Membership Level">
+                                <input type="text" class="form-control" name="expertise" [(ngModel)]="model.expertise" ngControl="expertise" placeholder="Expertise/Education/Training/Certification/Experience">
+                                <input type="text" class="form-control" name="location" [(ngModel)]="model.location" ngControl="location" placeholder="Location/Kompartement/Hub">
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit" id="cf-submit" name="submit">Search Now!</button>
+                        </form>
+                    </div>
+                    <!-- /.col -->
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </section>

@@ -1,0 +1,61 @@
+<section class="content-block gallery-1 gallery-1-1" id="expert-database">
+    <div class="container">
+        <form (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control"  name="keyword" [(ngModel)]="model.keyword" ngControl="keyword" placeholder="Name/Organization/Membership Level">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control"  name="expertise" [(ngModel)]="model.expertise" ngControl="expertise" placeholder="Expertise/Education/Training/Certification/Experience">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control"  name="location" [(ngModel)]="model.location" ngControl="location" placeholder="Location/Kompartement/Hub">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary no-margin" type="submit" id="cf-submit" name="submit">Search Now!</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="underlined-title">
+            <hr>
+            <h1>Information Systems Professionals/Experts Database</h1>
+            <h2>AISINDO (Asosiasi Sistem Informasi Indonesia)</h2>
+        </div>
+        <ul class="filter" data-pg-collapsed>
+            <li class="active">
+                <a href="javascript:void(0);" data-filter="*">All Specialization </a>
+            </li>
+            <li class="active" *ngFor="let specialization of specializations">
+                <a href="javascript:void(0);" attr.data-filter=".{{specialization.specialization | lowercase | replaceSpace}}">{{specialization.specialization}} </a>
+            </li>
+        </ul>
+        <!-- /.gallery-filter -->
+        <div class="row">
+            <div class="isotope-gallery-container">
+                <div class="col-md-3 col-sm-6 col-xs-12 gallery-item-wrapper {{expert.specialization | lowercase | replaceSpace}}"  *ngFor="let expert of experts">
+                    <div class="gallery-item">
+                        <div class="team-details" data-pg-collapsed>
+                            <h4 class="member-name"  (click)="onSelect(expert)" style="cursor: pointer">{{expert.name}}</h4>
+                            <p class="position" (click)="onSelect(expert)" style="cursor: pointer">{{expert.organisation}}. {{expert.position}}</p>
+                            <p (click)="onSelect(expert)" style="cursor: pointer">{{expert.expertise}} / {{expert.specialization}}</p>
+                            <p>{{expert.location}}</p>
+                            <!-- /.social -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.gallery-item-wrapper -->
+                <!-- /.gallery-item-wrapper -->
+                <!-- /.gallery-item-wrapper -->
+                <!-- /.gallery-item-wrapper -->
+                <!-- /.gallery-item-wrapper -->
+                <!-- /.gallery-item-wrapper -->
+                <!-- /.gallery-item-wrapper -->
+            </div>
+            <!-- /.isotope-gallery-container -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>

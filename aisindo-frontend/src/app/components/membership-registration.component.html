@@ -1,0 +1,112 @@
+<div class="content-block contact-3" id="register" data-pg-collapsed>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="contact" class="form-container" data-pg-collapsed >
+                    <div class="underlined-title">
+                        <h1>AISINDO Membership Registration / Renewal</h1>
+                        <hr>
+                        <h2>Make sure all informations are complete (including close-up photo & proof of payment)</h2>
+                        <hr>
+                        please notify our helpdesk through SMS/WA for faster response.
+                    </div>
+                    <fieldset>
+
+                      <div *ngIf="registered">
+                        <h1>Form submitted!<br/>You will receive a confirmation from administrator within 3-5 business days!</h1>
+                      </div>
+                      <div *ngIf="errorMessage" class="alert alert-danger">
+                        {{ errorMessage }}
+                      </div>
+
+                        <form *ngIf="currentUser.email && !registered" [formGroup]="registrationForm" (ngSubmit)="onSubmit()" >
+                            <div class="form-group">
+                              <label for="name" class="required">Name</label>
+                              <input type="text" id="name" class="form-control" placeholder="Name"
+                                    formControlName="name" required >
+                              <div *ngIf="formErrors.name" class="alert alert-danger">
+                                {{ formErrors.name }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="address" class="required">Address</label>
+                              <input type="text" id="address" class="form-control" placeholder="Address"
+                                    formControlName="address" required >
+                              <div *ngIf="formErrors.address" class="alert alert-danger">
+                                {{ formErrors.address }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="city" class="required">City</label>
+                              <input type="text" id="city" class="form-control" placeholder="City"
+                                    formControlName="city" required >
+                              <div *ngIf="formErrors.city" class="alert alert-danger">
+                                {{ formErrors.city }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="province" class="required">Province</label>
+                              <input type="text" id="province" class="form-control" placeholder="Province"
+                                    formControlName="province" required >
+                              <div *ngIf="formErrors.province" class="alert alert-danger">
+                                {{ formErrors.province }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="postalcode" class="required">Postal Code</label>
+                              <input type="text" id="postalcode" class="form-control" placeholder="Postal Code"
+                                    formControlName="postalcode" required >
+                              <div *ngIf="formErrors.postalcode" class="alert alert-danger">
+                                {{ formErrors.postalcode }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="phonenumber" class="required">Phone Number (mobile)</label>
+                              <input type="text" id="phonenumber" class="form-control" placeholder="Phone Number (mobile)"
+                                    formControlName="phonenumber" required >
+                              <div *ngIf="formErrors.phonenumber" class="alert alert-danger">
+                                {{ formErrors.phonenumber }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="gender" class="required">Gender</label>
+                              <div *ngFor="let gender of genders">
+                                  <label>
+                                   <input type="radio" id="gender" formControlName="gender" value="{{gender.value}}" >
+                                  {{gender.display}}
+                                  </label>
+                              </div>
+                              <div *ngIf="formErrors.gender" class="alert alert-danger">
+                                {{ formErrors.gender }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="photo" class="required">Upload a Profile Photo</label>
+                                  <input type="file" (change)="uploadPhotoService.photoFileChangeEvent($event)" required />
+                              <div *ngIf="formErrors.photo" class="alert alert-danger">
+                                {{ formErrors.photo }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="paymentreceipt" class="required">Upload a Payment Receipt</label>
+                                  <input type="file" (change)="uploadPhotoService.proofPaymentFileChangeEvent($event)" required />
+                              <div *ngIf="formErrors.paymentreceipt" class="alert alert-danger">
+                                {{ formErrors.paymentreceipt }}
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                                  <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid" [ngBusy]="{busy: busy, message: 'Loading...', backdrop: true, delay: 200, minDuration: 600}">Register</button>
+                            </div>
+                        </form>
+
+                    </fieldset>
+                </div>
+                <!-- /.form-container -->
+            </div>
+            <helpdesk></helpdesk>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>

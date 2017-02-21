@@ -1,0 +1,23 @@
+<table class="table" data-pg-collapsed>
+    <thead>
+        <tr>
+            <th>Last Update</th>
+            <th>Name / Email / Phone (click to edit!)</th>
+            <th>Expiration Date / Active? / Payment Receipt</th>
+            <th>Member ID / Level / Featured?</th>
+            <th>Reviewer?</th>
+            <th>Admin?</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.created | dateToIso}}</td>
+            <td (click)="onSelect(user)" style="cursor: pointer">{{user.name}}<br />{{user.email}}<br />{{user.phonenumber}}</td>
+            <td>{{user.expirationdate | dateToIso}}<br />{{user.activemembership}}<br /><a href="{{user.paymentreceipt}}" target="_blank">payment receipt</a></td>
+            <td>{{user.memberid}}<br />{{user.levelmembership}}<br />{{user.featuredexpert}}</td>
+            <td>{{user.reviewer}}</td>
+            <td>{{user.admin}}</td>
+        </tr>
+    </tbody>
+</table>

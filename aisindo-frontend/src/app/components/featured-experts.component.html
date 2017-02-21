@@ -1,0 +1,39 @@
+
+        <section class="content-block team-1 team-1-2" id="featured-expert">
+            <div class="container" >
+                <div class="underlined-title">
+                    <h1>Featured Professionals/Experts</h1>
+                    <hr>
+                </div>
+                <div class="row">
+
+                    <div [ngBusy]="{busy: busy, message: 'Loading...', backdrop: true, delay: 200, minDuration: 600}"></div>
+
+                    <div class="col-md-3 col-sm-6 team-member-wrap" *ngFor="let expert of featuredExperts">
+                        <div class="team-member">
+                            <img src="{{expert.photo}}" class="img-responsive" alt="Member Image" (click)="onSelect(expert)" style="cursor: pointer">
+                            <div class="team-details">
+                                <h4 class="member-name" (click)="onSelect(expert)" style="cursor: pointer">{{expert.name}}</h4>
+                                <p class="position">{{expert.position}}  {{expert.organisation}}</p>
+                                <p>Specialization: {{expert.specialization}}</p>
+                                <p>Expertise: {{expert.expertise}}</p>
+                                <ul class="social social-dark">
+                                    <li *ngIf="expert.facebook != '' ">
+                                        <a href="{{expert.facebook}}"><i class="fa fa-2x fa-facebook"></i></a>
+                                    </li>
+                                    <li *ngIf="expert.twitter != '' ">
+                                        <a href="{{expert.twitter}}"><i class="fa fa-2x fa-twitter"></i></a>
+                                    </li>
+                                    <li *ngIf="expert.linkedin != '' ">
+                                        <a href="{{expert.linkedin}}"><i class="fa fa-2x fa-linkedin"></i></a>
+                                    </li>
+                                </ul>
+                                <!-- /.social -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>

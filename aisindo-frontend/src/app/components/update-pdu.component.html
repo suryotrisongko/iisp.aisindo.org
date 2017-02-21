@@ -1,0 +1,273 @@
+<div class="content-block contact-3" id="register" data-pg-collapsed>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+
+              <div class="underlined-title">
+                  <h1>Professional Development Unit (PDU) {{model.email}}</h1>
+              </div>
+
+              <div class="alert alert-info" *ngIf="submitted">
+                <h1>Form submitted, changes had been made.</h1>
+              </div>
+              <div *ngIf="errorMessage" class="alert alert-danger">
+                {{ errorMessage }}
+              </div>
+              <div class="alert alert-danger"  *ngIf="!loginService.checkActiveMember()">
+                Your expert profile can only be modified after your membership has been activated!
+              </div>
+
+<div style="white-space:pre-wrap;">Sistem poin Professional Development Unit (PDU), bertujuan untuk memotivasi, mengukur, dan menjamin kompetensi profesional anggota AISINDO.
+I.	Perhitungan poin PDU mencakup bidang:
+•	Practices
+  Berkontribusi dalam proyek sistem informasi, dll
+•	Education
+  Mengikuti pelatihan dalam bidang sistem infomasi, sebagai pemateri dalam pelatihan dalam bidang sistem informasi, mengikuti sertifikasi dalam bidang sistem informasi, menjadi peserta dalamkonferensi sistem informasi baik dalam maupun luar negri, sebagai pembicara dalam acara yang berkaitan dengan sistem informasi, tergabung dalam keanggotaan AIS global, dll.
+II.	Sistem Klaim PDU
+•	Menyerahkan bukti keaktifan dalam bidang Practices maupun Education melalui sertifikat/bukti lainnya kepada status Keanggotaan yang selanjutnya akan diteruskan ke Tim Reviewer PDU
+•	Tim Reviewer PDU akan menilai bobot dari bukti keaktifan tersebut menjadi poin PDU.
+III.	Level Keanggotaan Berdasarkan PDU
+•	Junior IS Profesional (20 PDU)
+•	Intermediate IS Profesional (50 PDU)
+•	Senior IS Profesional (80 PDU)
+<p>TIPS: depending on your internet connection, it might better to upload one file at a time!</p>
+</div>
+
+              <form [formGroup]="updatePduForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+
+                <div class="form-container" data-pg-collapsed  *ngIf="loginService.checkAdmin() || loginService.checkReviewer()">
+                    <fieldset>
+                        <h4>Warning: Only Admin May Change This!</h4>
+                            <div class="form-group">
+                              <label for="email" class="required">Email</label>
+                              <input type="text" id="email" class="form-control" placeholder="Email"
+                                    formControlName="email" required value="{{currentPdu.email}}" >
+                              <div *ngIf="formErrors.email" class="alert alert-danger">
+                                {{ formErrors.email }}
+                              </div>
+                            </div>
+                    </fieldset>
+                </div>
+
+                <div class="form-container" data-pg-collapsed  *ngIf="loginService.checkAdmin() || loginService.checkReviewer()">
+                    <fieldset>
+                        <h4>Warning: Only Reviewer May Change This!</h4>
+                            <div class="form-group">
+                              <label for="status" class="required">Status</label>
+                              <select class="form-control" id="status" formControlName="status" [ngModel]="currentPdu.status" required>
+                                  <option *ngFor="let status of statuss" value="{{status.value}}" [selected]="status.value === currentPdu.status	">{{status.display}}</option>
+                              </select>
+                            </div>
+                        <h5>Dear Reviewer, please report to Helpdesk after making decision, in order to make the decision (Membership Level) to be displayed publicly at member's profile. </h5>
+                    </fieldset>
+                </div>
+
+
+                <div class="form-container" data-pg-collapsed *ngIf="loginService.checkActiveMember()" >
+                    <fieldset>
+                        <h4>PDU: {{currentPdu.status}}</h4>
+                            <div class="form-group">
+                              <label for="notes" class="required">Notes</label>
+                              <input type="text" id="notes" class="form-control" placeholder="Notes (detail description of your application)"
+                                    formControlName="notes" required value="{{currentPdu.notes}}" >
+                              <div *ngIf="formErrors.notes" class="alert alert-danger">
+                                {{ formErrors.notes }}
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="pdu1">PDU 1</label>
+                              <input type="text" id="pdu1" class="form-control" placeholder="PDU 1" formControlName="pdu1" value="{{currentPdu.pdu1}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu1Url }}" target="_blank">{{ imageProofPdu1Url }}</a></div>
+                              <label for="proofpdu1">Proof PDU 1</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu1FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu2">PDU 2</label>
+                              <input type="text" id="pdu2" class="form-control" placeholder="PDU 2" formControlName="pdu2" value="{{currentPdu.pdu2}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu2Url }}" target="_blank">{{ imageProofPdu2Url }}</a></div>
+                              <label for="proofpdu2">Proof PDU 2</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu2FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu3">PDU 3</label>
+                              <input type="text" id="pdu3" class="form-control" placeholder="PDU 3" formControlName="pdu3" value="{{currentPdu.pdu3}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu3Url }}" target="_blank">{{ imageProofPdu3Url }}</a></div>
+                              <label for="proofpdu3">Proof PDU 3</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu3FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu4">PDU 4</label>
+                              <input type="text" id="pdu4" class="form-control" placeholder="PDU 4" formControlName="pdu4" value="{{currentPdu.pdu4}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu4Url }}" target="_blank">{{ imageProofPdu4Url }}</a></div>
+                              <label for="proofpdu4">Proof PDU 4</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu4FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu5">PDU 5</label>
+                              <input type="text" id="pdu5" class="form-control" placeholder="PDU 5" formControlName="pdu5" value="{{currentPdu.pdu5}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu5Url }}" target="_blank">{{ imageProofPdu5Url }}</a></div>
+                              <label for="proofpdu5">Proof PDU 5</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu5FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu6">PDU 6</label>
+                              <input type="text" id="pdu6" class="form-control" placeholder="PDU 6" formControlName="pdu6" value="{{currentPdu.pdu6}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu6Url }}" target="_blank">{{ imageProofPdu6Url }}</a></div>
+                              <label for="proofpdu6">Proof PDU 6</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu6FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu7">PDU 7</label>
+                              <input type="text" id="pdu7" class="form-control" placeholder="PDU 7" formControlName="pdu7" value="{{currentPdu.pdu7}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu7Url }}" target="_blank">{{ imageProofPdu7Url }}</a></div>
+                              <label for="proofpdu7">Proof PDU 7</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu7FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu8">PDU 8</label>
+                              <input type="text" id="pdu8" class="form-control" placeholder="PDU 8" formControlName="pdu8" value="{{currentPdu.pdu8}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu8Url }}" target="_blank">{{ imageProofPdu8Url }}</a></div>
+                              <label for="proofpdu8">Proof PDU 8</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu8FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu9">PDU 9</label>
+                              <input type="text" id="pdu9" class="form-control" placeholder="PDU 9" formControlName="pdu9" value="{{currentPdu.pdu9}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu9Url }}" target="_blank">{{ imageProofPdu9Url }}</a></div>
+                              <label for="proofpdu9">Proof PDU 9</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu9FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu10">PDU 10</label>
+                              <input type="text" id="pdu10" class="form-control" placeholder="PDU 10" formControlName="pdu10" value="{{currentPdu.pdu10}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu10Url }}" target="_blank">{{ imageProofPdu10Url }}</a></div>
+                              <label for="proofpdu10">Proof PDU 10</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu10FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu11">PDU 11</label>
+                              <input type="text" id="pdu11" class="form-control" placeholder="PDU 11" formControlName="pdu11" value="{{currentPdu.pdu11}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu11Url }}" target="_blank">{{ imageProofPdu11Url }}</a></div>
+                              <label for="proofpdu11">Proof PDU 11</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu11FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu12">PDU 12</label>
+                              <input type="text" id="pdu12" class="form-control" placeholder="PDU 12" formControlName="pdu12" value="{{currentPdu.pdu12}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu12Url }}" target="_blank">{{ imageProofPdu12Url }}</a></div>
+                              <label for="proofpdu12">Proof PDU 12</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu12FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu13">PDU 13</label>
+                              <input type="text" id="pdu13" class="form-control" placeholder="PDU 13" formControlName="pdu13" value="{{currentPdu.pdu13}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu13Url }}" target="_blank">{{ imageProofPdu13Url }}</a></div>
+                              <label for="proofpdu13">Proof PDU 13</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu13FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu14">PDU 14</label>
+                              <input type="text" id="pdu14" class="form-control" placeholder="PDU 14" formControlName="pdu14" value="{{currentPdu.pdu14}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu14Url }}" target="_blank">{{ imageProofPdu14Url }}</a></div>
+                              <label for="proofpdu14">Proof PDU 14</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu14FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu15">PDU 15</label>
+                              <input type="text" id="pdu15" class="form-control" placeholder="PDU 15" formControlName="pdu15" value="{{currentPdu.pdu15}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu15Url }}" target="_blank">{{ imageProofPdu15Url }}</a></div>
+                              <label for="proofpdu15">Proof PDU 15</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu15FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu16">PDU 16</label>
+                              <input type="text" id="pdu16" class="form-control" placeholder="PDU 16" formControlName="pdu16" value="{{currentPdu.pdu16}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu16Url }}" target="_blank">{{ imageProofPdu16Url }}</a></div>
+                              <label for="proofpdu16">Proof PDU 16</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu16FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu17">PDU 17</label>
+                              <input type="text" id="pdu17" class="form-control" placeholder="PDU 17" formControlName="pdu17" value="{{currentPdu.pdu17}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu17Url }}" target="_blank">{{ imageProofPdu17Url }}</a></div>
+                              <label for="proofpdu17">Proof PDU 17</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu17FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu18">PDU 18</label>
+                              <input type="text" id="pdu18" class="form-control" placeholder="PDU 18" formControlName="pdu18" value="{{currentPdu.pdu18}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu18Url }}" target="_blank">{{ imageProofPdu18Url }}</a></div>
+                              <label for="proofpdu18">Proof PDU 18</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu18FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu19">PDU 19</label>
+                              <input type="text" id="pdu19" class="form-control" placeholder="PDU 19" formControlName="pdu19" value="{{currentPdu.pdu19}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu19Url }}" target="_blank">{{ imageProofPdu19Url }}</a></div>
+                              <label for="proofpdu19">Proof PDU 19</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu19FileChangeEvent($event)" />
+                            </div>
+                            <div class="form-group">
+                              <label for="pdu20">PDU 20</label>
+                              <input type="text" id="pdu20" class="form-control" placeholder="PDU 20" formControlName="pdu20" value="{{currentPdu.pdu20}}" >
+                            </div>
+                            <div class="form-group">
+                              <div><a href="{{ imageProofPdu20Url }}" target="_blank">{{ imageProofPdu20Url }}</a></div>
+                              <label for="proofpdu20">Proof PDU 20</label>
+                              <input type="file" (change)="uploadPhotoService.proofpdu20FileChangeEvent($event)" />
+                            </div>
+
+                    </fieldset>
+                </div>
+
+                <div class="form-group" style="text-align: center;">
+                      <button type="submit" class="btn btn-primary" [ngBusy]="{busy: busy, message: 'Loading...', backdrop: true, delay: 200, minDuration: 600}">Update & Save ALL Data</button>
+                </div>
+
+                </form>
+            </div>
+
+            <helpdesk></helpdesk>
+        </div>
+    </div>
+</div>

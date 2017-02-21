@@ -1,0 +1,56 @@
+<div class="content-block contact-3" id="login" data-pg-collapsed>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+
+              <div [hidden]="!loginService.checkLogin()">
+                <h3>Logged In Successfully! </h3>
+                <h2>Welcome back {{currentEmail}}!</h2>
+              </div>
+
+                <div id="contact" class="form-container" data-pg-collapsed [hidden]="loginService.checkLogin()">
+                    <div class="underlined-title">
+                        <h1>User Login</h1>
+                    </div>
+                    <fieldset>
+
+                      <div *ngIf="errorMessage" class="alert alert-danger">
+                        {{ errorMessage }}
+                      </div>
+
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+                            <div class="form-group">
+                              <label for="email" class="required">Email</label>
+                              <input type="text" id="email" class="form-control" placeholder="Email"
+                                    formControlName="email" required >
+                              <div *ngIf="formErrors.email" class="alert alert-danger">
+                                {{ formErrors.email }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="password" class="required">Password</label>
+                              <input type="password" id="password" class="form-control" placeholder="Password"
+                                    formControlName="password" required validateEqual="confirmPassword" reverse="true" >
+                              <div *ngIf="formErrors.password" class="alert alert-danger">
+                                {{ formErrors.password }}
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid" [ngBusy]="{busy: busy, message: 'Loading...', backdrop: true, delay: 200, minDuration: 600}">Login</button>
+                            </div>
+                        </form>
+
+                    </fieldset>
+                </div>
+
+                <!-- /.form-container -->
+            </div>
+
+            <forgotpassword *ngIf="!currentEmail"></forgotpassword>
+            <br/>
+            <helpdesk></helpdesk>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>

@@ -1,0 +1,181 @@
+<section class="content-block content-1-8">
+    <div class="container">
+        <div class="underlined-title">
+            <h1>{{expert.name}}</h1>
+            <hr>
+            <h2>{{expert.position}} {{expert.organisation}}</h2>
+            <h3>Specialization : {{expert.specialization}}</h3>
+            <ul class="social social-dark" data-pg-collapsed>
+                <li *ngIf="expert.personalwebsite != ''" >
+                    <a href="{{expert.personalwebsite}}" target="_blank"><i class="fa fa-2x fa-home"></i>personal website</a>
+                </li>
+                <li *ngIf="expert.facebook != ''" >
+                    <a href="{{expert.facebook}}" target="_blank"><i class="fa fa-2x fa-facebook"></i>facebook</a>
+                </li>
+                <li *ngIf="expert.twitter != ''" >
+                    <a href="{{expert.twitter}}" target="_blank"><i class="fa fa-2x fa-twitter"></i>twitter</a>
+                </li>
+                <li *ngIf="expert.linkedin != ''" >
+                    <a href="{{expert.linkedin}}" target="_blank"><i class="fa fa-2x fa-linkedin"></i>linkedin</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="nav nav-tabs text-center" role="tablist" id="myTab">
+            <li class="active">
+                <a href="#tab1" role="tab" data-toggle="tab">Profile</a>
+            </li>
+            <li>
+                <a href="#tab2" role="tab" data-toggle="tab">Expertise</a>
+            </li>
+            <li>
+                <a href="#tab3" role="tab" data-toggle="tab">Publications</a>
+            </li>
+            <li>
+                <a href="#tab5" role="tab" data-toggle="tab">Educations/Trainings/Certifications</a>
+            </li>
+            <li>
+                <a href="#tab6" role="tab" data-toggle="tab">Work/Project Experiences</a>
+            </li>
+            <li>
+                <a href="#tab4" role="tab" data-toggle="tab">Contact</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1 col-sm-6">
+                        <img class="img-responsive" src="{{expert.photo}}">
+                        <h3>Location</h3>
+                        <p>{{expert.city}} , {{expert.province}}</p>
+                        <h3>Membership</h3>
+                        <p>AISINDO Member Id = {{expert.memberid}}</p>
+                        <p>AISINDO Member Since = {{expert.membersince | dateToIso}}</p>
+                        <p>AISINDO Membership Expiration Date = {{expert.expirationdate | dateToIso}}</p>
+                        <p>AISINDO Membership Level = {{expert.levelmembership}}</p>
+                        <p>AISINDO Kompartemen = {{expert.kompartemen}}</p>
+                        <p>AISINDO Hub = {{expert.hub}}</p>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-5 col-sm-6">
+                        <h3>Position</h3>
+                        <p>Position = {{expert.position}}</p>
+                        <p>Department/Division = {{expert.departmentdivision}}</p>
+                        <p>Organisation = {{expert.organisation}}</p>
+                        <p>Organisation Type = {{expert.organisationtype}}</p>
+                        <p>Organisation Website = {{expert.organisationwebsite}}</p>
+                        <h3>Notes</h3>
+                        <p>{{expert.notes}}</p>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#tab1 -->
+            <div class="tab-pane fade" id="tab2">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Primary Areas</h3>
+                        <p>{{expert.primaryareas}}</p>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Expertise</h3>
+                        <p>{{expert.expertise}}</p>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Specialization</h3>
+                        <p>{{expert.specialization}}</p>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Available For</h3>
+                        <p>{{expert.availablefor}}</p>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- /.row -->
+            </div>
+            <!-- /#tab2 -->
+            <div class="tab-pane fade" id="tab3">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1" style="white-space:pre-wrap;">
+                        <p>{{expert.publications}}</p>
+                    </div>
+                    <!-- /.col -->
+                    <!-- /.col -->
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#tab3 -->
+            <div class="tab-pane fade" id="tab4">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+                        <ul class="contact-info" data-pg-collapsed *ngIf="loginService.checkLogin()">
+                          <li>
+                              <span class="fa fa-map-marker"></span>
+                              <span>{{expert.address}} , {{expert.city}} , {{expert.province}} , {{expert.postalcode}}</span>
+                          </li>
+                            <li>
+                                <span class="fa fa-phone"></span>
+                                <span>{{expert.phonenumber}}</span>
+                            </li>
+                            <li>
+                                <span class="fa fa-phone"></span>
+                                <span>{{expert.phone}}</span>
+                            </li>
+                            <li>
+                                <span class="fa fa-envelope"></span>
+                                <a href="mailto:{{expert.email}}">{{expert.email}}</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-fax"></span>
+                                <span>{{expert.fax}}</span>
+                            </li>
+                        </ul>
+                        <p *ngIf="!loginService.checkLogin()">Contact information only available for members only. Please register/Sign In</p>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#tab4 -->
+
+            <div class="tab-pane fade" id="tab5">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Educations</h3>
+                        <p>{{expert.pendidikan}}</p>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Certifications</h3>
+                        <p>{{expert.sertifikasi}}</p>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Trainings</h3>
+                        <p>{{expert.learning}}</p>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- /.row -->
+            </div>
+            <!-- /#tab5 -->
+
+            <div class="tab-pane fade" id="tab6">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <h3>Work/Project Experiences</h3>
+                        <p>{{expert.practice}}</p>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- /.row -->
+            </div>
+            <!-- /#tab6 -->
+
+        </div>
+        <!-- /.tab-content -->
+    </div>
+    <!-- /.container -->
+</section>
