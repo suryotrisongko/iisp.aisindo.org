@@ -10,11 +10,9 @@ import com.aisindo.backend.model.Expert;
 import com.aisindo.backend.service.ExpertService;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @RequestMapping("/expert")
-@EnableSwagger2
 public class ExpertController {
 
 	@Autowired

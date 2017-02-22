@@ -10,11 +10,9 @@ import com.aisindo.backend.model.Specialization;
 import com.aisindo.backend.service.SpecializationService;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @RequestMapping("/specialization")
-@EnableSwagger2
 public class SpecializationController {
 
 	@Autowired

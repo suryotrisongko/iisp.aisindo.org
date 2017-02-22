@@ -14,12 +14,9 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestParam;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @RequestMapping("/rest")
-@EnableSwagger2
 public class PduResources {
         
 	@Autowired
